@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>defunit: Define a new physical unit. &mdash; ASDF Standard 0.1.0dev documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/asdfstandard.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '0.1.0dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../../../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
+    <link rel="top" title="ASDF Standard 0.1.0dev documentation" href="../../../../../index.html" />
+    <link rel="up" title="Unit" href="../../../../unit.html" />
+    <link rel="next" title="Extending ASDF" href="../../../../../extending.html" />
+    <link rel="prev" title="unit: Physical unit." href="unit.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+  
+  <a href="https://github.com/spacetelescope/asdf-standard"
+     class="visible-desktop"><img
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../../../index.html">
+          ASDF Standard</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1.0dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../../../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../file_layout.html">Low-level file layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tree.html">The tree in-depth</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../index.html">ASDF schema definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../extending.html">Extending ASDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../known_limits.html">Known limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changes.html">Changes</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="unit.html" title="Previous Chapter: unit: Physical unit."><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; unit: Physical u...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../../../../../extending.html" title="Next Chapter: Extending ASDF"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Extending ASDF &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="defunit-define-a-new-physical-unit">
+<span id="http-stsci-edu-schemas-asdf-0-1-0-unit-defunit"></span><h1>defunit: Define a new physical unit.<a class="headerlink" href="#defunit-define-a-new-physical-unit" title="Permalink to this headline">¶</a></h1>
+<p><span class="soft">Type:</span> object.</p>
+<p>Define a new physical unit.</p>
+<p>Defines a new unit.  It can be used to either:</p>
+<ul class="simple">
+<li>Define a new base unit.</li>
+<li>Create a new unit name that is a equivalent to a given unit.</li>
+</ul>
+<p>The new unit must be defined before any unit tags that use it.</p>
+<p><span class="category">Properties:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-0-1-0-unit-defunit-properties-name"><span class="entry">name</span></p>
+<p><span class="soft">Type:</span> string ( <span class="soft">regex</span> <tt class="regexp docutils literal"><span class="pre">[A-Za-z_][A-Za-z0-9_]+</span></tt> ). Required.</p>
+<p>The name of the new unit.</p>
+<p id="http-stsci-edu-schemas-asdf-0-1-0-unit-defunit-properties-unit"><span class="entry">unit</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="unit.html"><em>unit</em></a> <span class="soft">or</span> null.</p>
+<p>The unit that the new name is equivalent to.  It is optional,
+and if not provided, or <tt class="docutils literal"><span class="pre">null</span></tt>, this <tt class="docutils literal"><span class="pre">defunit</span></tt> defines a new
+base unit.</p>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-0-1-0-unit-defunit-properties-unit-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="unit.html"><em>unit</em></a>.</p>
+<p id="http-stsci-edu-schemas-asdf-0-1-0-unit-defunit-properties-unit-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> null.</p>
+</div></blockquote>
+</div></blockquote>
+<p><a class="reference download internal" href="../../../../../_downloads/defunit.yaml"><tt class="xref download docutils literal"><span class="pre">Original</span> <span class="pre">schema</span> <span class="pre">in</span> <span class="pre">YAML</span></tt></a></p>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Erik Bray, Michael Droettboom, Space Telescope Science Institute.<br/>
+      Last updated on Sep 15, 2014.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>fits: A FITS file inside of an ASDF file. &mdash; ASDF Standard 0.1.0dev documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/asdfstandard.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '0.1.0dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../../../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../../../../_static/logo.ico"/>
+    <link rel="top" title="ASDF Standard 0.1.0dev documentation" href="../../../../../index.html" />
+    <link rel="up" title="FITS" href="../../../../fits.html" />
+    <link rel="next" title="Unit" href="../../../../unit.html" />
+    <link rel="prev" title="FITS" href="../../../../fits.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+  
+  <a href="https://github.com/spacetelescope/asdf-standard"
+     class="visible-desktop"><img
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../../../index.html">
+          ASDF Standard</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1.0dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../../../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../file_layout.html">Low-level file layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tree.html">The tree in-depth</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../index.html">ASDF schema definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../extending.html">Extending ASDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../known_limits.html">Known limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changes.html">Changes</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../../../../fits.html" title="Previous Chapter: FITS"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; FITS</span>
+    </a>
+  </li>
+  <li>
+    <a href="../../../../unit.html" title="Next Chapter: Unit"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Unit &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="fits-a-fits-file-inside-of-an-asdf-file">
+<span id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits"></span><h1>fits: A FITS file inside of an ASDF file.<a class="headerlink" href="#fits-a-fits-file-inside-of-an-asdf-file" title="Permalink to this headline">¶</a></h1>
+<p><span class="soft">Type:</span> array <span class="soft">of</span> ( object ).</p>
+<p>A FITS file inside of an ASDF file.</p>
+<p>This schema is useful for distributing ASDF files that can
+automatically be converted to FITS files by specifying the exact
+content of the resulting FITS file.</p>
+<p>Not all kinds of data in FITS are directly representable in ASDF.
+For example, applying an offset and scale to the data using the
+<tt class="docutils literal"><span class="pre">BZERO</span></tt> and <tt class="docutils literal"><span class="pre">BSCALE</span></tt> keywords.  In these cases, it will not be
+possible to store the data in the native format from FITS and also
+be accessible in its proper form in the ASDF file.</p>
+<p><span class="category">Items:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items"><span class="soft">Type:</span> object.</p>
+<p>Each item represents a single header/data unit (HDU).</p>
+<p><span class="category">Properties:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items-properties-header"><span class="entry">header</span></p>
+<p><span class="soft">Type:</span> array <span class="soft">of</span> ( array 0 ≤ <em>len</em> ≤ 3 ). Required.</p>
+<p>A list of the keyword/value/comment triples from the header, in the order they appear in the FITS file.</p>
+<p><span class="category">Items:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items-properties-header-items"><span class="soft">Type:</span> array 0 ≤ <em>len</em> ≤ 3.</p>
+<p><span class="category">Items:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items-properties-header-items-0"><span class="entry">index[0]</span></p>
+<p><span class="soft">Type:</span> string ( <em>len</em> ≤ 8 <span class="soft">regex</span> <tt class="regexp docutils literal"><span class="pre">[A-Z0-9]*</span></tt> ).</p>
+<p>The keyword.</p>
+<p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items-properties-header-items-1"><span class="entry">index[1]</span></p>
+<p><span class="soft">Type:</span> string ( <em>len</em> ≤ 60 ) <span class="soft">or</span> number <span class="soft">or</span> boolean.</p>
+<p>The value.</p>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items-properties-header-items-1-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> string ( <em>len</em> ≤ 60 ).</p>
+<p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items-properties-header-items-1-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> number.</p>
+<p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items-properties-header-items-1-anyof-2"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> boolean.</p>
+</div></blockquote>
+<p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items-properties-header-items-2"><span class="entry">index[2]</span></p>
+<p><span class="soft">Type:</span> string ( <em>len</em> ≤ 60 ).</p>
+<p>The comment.</p>
+</div></blockquote>
+</div></blockquote>
+<p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items-properties-data"><span class="entry">data</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="../core/ndarray.html"><em>ndarray</em></a> <span class="soft">or</span> null.</p>
+<p>The data part of the HDU.</p>
+<p><span class="soft">Default:</span> null</p>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items-properties-data-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="../core/ndarray.html"><em>ndarray</em></a>.</p>
+<p id="http-stsci-edu-schemas-asdf-0-1-0-fits-fits-items-properties-data-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> null.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p><span class="category">Examples:</span></p>
+<p>A simple FITS file with a primary header and two extensions:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!fits</span><span class="l-Scalar-Plain">/fits</span>
+    <span class="l-Scalar-Plain">- header</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">SIMPLE</span><span class="p-Indicator">,</span> <span class="nv">true</span><span class="p-Indicator">,</span> <span class="nv">conforms to FITS standard</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">BITPIX</span><span class="p-Indicator">,</span> <span class="nv">8</span><span class="p-Indicator">,</span> <span class="nv">array data type</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">NAXIS</span><span class="p-Indicator">,</span> <span class="nv">0</span><span class="p-Indicator">,</span> <span class="nv">number of array dimensions</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">EXTEND</span><span class="p-Indicator">,</span> <span class="nv">true</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="s">&#39;&#39;</span><span class="p-Indicator">,</span> <span class="nv">Top Level MIRI Metadata</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">DATE</span><span class="p-Indicator">,</span> <span class="s">&#39;2013-08-30T10:49:55.070373&#39;</span><span class="p-Indicator">,</span> <span class="nv">The date this file was created (UTC)</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">FILENAME</span><span class="p-Indicator">,</span> <span class="nv">MiriDarkReferenceModel_test.fits</span><span class="p-Indicator">,</span> <span class="nv">The name of the file</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">TELESCOP</span><span class="p-Indicator">,</span> <span class="nv">JWST</span><span class="p-Indicator">,</span> <span class="nv">The telescope used to acquire the data</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="s">&#39;&#39;</span><span class="p-Indicator">,</span> <span class="nv">Information about the observation</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">DATE-OBS</span><span class="p-Indicator">,</span> <span class="s">&#39;2013-08-30T10:49:55.000000&#39;</span><span class="p-Indicator">,</span> <span class="nv">The date the observation was made (UTC)</span><span class="p-Indicator">]</span>
+<span class="-Error">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">data</span><span class="p-Indicator">:</span> <span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray</span>
+        <span class="l-Scalar-Plain">dtype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float32</span>
+        <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="nv">3</span><span class="p-Indicator">,</span> <span class="nv">3</span><span class="p-Indicator">,</span> <span class="nv">4</span><span class="p-Indicator">]</span>
+        <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+      <span class="l-Scalar-Plain">header</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">XTENSION</span><span class="p-Indicator">,</span> <span class="nv">IMAGE</span><span class="p-Indicator">,</span> <span class="nv">Image extension</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">BITPIX</span><span class="p-Indicator">,</span> <span class="nv">-32</span><span class="p-Indicator">,</span> <span class="nv">array data type</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">NAXIS</span><span class="p-Indicator">,</span> <span class="nv">4</span><span class="p-Indicator">,</span> <span class="nv">number of array dimensions</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">NAXIS1</span><span class="p-Indicator">,</span> <span class="nv">4</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">NAXIS2</span><span class="p-Indicator">,</span> <span class="nv">3</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">NAXIS3</span><span class="p-Indicator">,</span> <span class="nv">3</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">NAXIS4</span><span class="p-Indicator">,</span> <span class="nv">2</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">PCOUNT</span><span class="p-Indicator">,</span> <span class="nv">0</span><span class="p-Indicator">,</span> <span class="nv">number of parameters</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">GCOUNT</span><span class="p-Indicator">,</span> <span class="nv">1</span><span class="p-Indicator">,</span> <span class="nv">number of groups</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">EXTNAME</span><span class="p-Indicator">,</span> <span class="nv">SCI</span><span class="p-Indicator">,</span> <span class="nv">extension name</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">BUNIT</span><span class="p-Indicator">,</span> <span class="nv">DN</span><span class="p-Indicator">,</span> <span class="nv">Units of the data array</span><span class="p-Indicator">]</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">data</span><span class="p-Indicator">:</span> <span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray</span>
+        <span class="l-Scalar-Plain">dtype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float32</span>
+        <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">2</span><span class="p-Indicator">,</span> <span class="nv">3</span><span class="p-Indicator">,</span> <span class="nv">3</span><span class="p-Indicator">,</span> <span class="nv">4</span><span class="p-Indicator">]</span>
+        <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1</span>
+      <span class="l-Scalar-Plain">header</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">XTENSION</span><span class="p-Indicator">,</span> <span class="nv">IMAGE</span><span class="p-Indicator">,</span> <span class="nv">Image extension</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">BITPIX</span><span class="p-Indicator">,</span> <span class="nv">-32</span><span class="p-Indicator">,</span> <span class="nv">array data type</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">NAXIS</span><span class="p-Indicator">,</span> <span class="nv">4</span><span class="p-Indicator">,</span> <span class="nv">number of array dimensions</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">NAXIS1</span><span class="p-Indicator">,</span> <span class="nv">4</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">NAXIS2</span><span class="p-Indicator">,</span> <span class="nv">3</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">NAXIS3</span><span class="p-Indicator">,</span> <span class="nv">3</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">NAXIS4</span><span class="p-Indicator">,</span> <span class="nv">2</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">PCOUNT</span><span class="p-Indicator">,</span> <span class="nv">0</span><span class="p-Indicator">,</span> <span class="nv">number of parameters</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">GCOUNT</span><span class="p-Indicator">,</span> <span class="nv">1</span><span class="p-Indicator">,</span> <span class="nv">number of groups</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">EXTNAME</span><span class="p-Indicator">,</span> <span class="nv">ERR</span><span class="p-Indicator">,</span> <span class="nv">extension name</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span><span class="nv">BUNIT</span><span class="p-Indicator">,</span> <span class="nv">DN</span><span class="p-Indicator">,</span> <span class="nv">Units of the error array</span><span class="p-Indicator">]</span>
+</pre></div>
+</div>
+<p><a class="reference download internal" href="../../../../../_downloads/fits.yaml"><tt class="xref download docutils literal"><span class="pre">Original</span> <span class="pre">schema</span> <span class="pre">in</span> <span class="pre">YAML</span></tt></a></p>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Erik Bray, Michael Droettboom, Space Telescope Science Institute.<br/>
+      Last updated on Sep 15, 2014.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

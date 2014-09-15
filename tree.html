@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The tree in-depth &mdash; ASDF Standard 0.1.0dev documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/asdfstandard.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/logo.ico"/>
+    <link rel="top" title="ASDF Standard 0.1.0dev documentation" href="index.html" />
+    <link rel="next" title="ASDF schema definitions" href="schemas/index.html" />
+    <link rel="prev" title="Low-level file layout" href="file_layout.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+  
+  <a href="https://github.com/spacetelescope/asdf-standard"
+     class="visible-desktop"><img
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          ASDF Standard</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1.0dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_layout.html">Low-level file layout</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">The tree in-depth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schemas/index.html">ASDF schema definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending ASDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_limits.html">Known limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="file_layout.html" title="Previous Chapter: Low-level file layout"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Low-level file l...</span>
+    </a>
+  </li>
+  <li>
+    <a href="schemas/index.html" title="Next Chapter: ASDF schema definitions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">ASDF schema defi... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="the-tree-in-depth">
+<span id="tree-in-depth"></span><h1>The tree in-depth<a class="headerlink" href="#the-tree-in-depth" title="Permalink to this headline">¶</a></h1>
+<p>The ASDF tree, being encoded in YAML, is built out of the basic
+structures common to most dynamic languages: mappings (dictionaries),
+sequences (lists), and scalars (strings, integers, floating-point
+numbers, booleans, etc.).  All of this comes &#8220;for free&#8221; by using <a class="reference external" href="http://yaml.org/spec/1.1/">YAML</a>.</p>
+<p>Since these core data structures on their own are so flexible, the
+ASDF standard includes a number of schema that define the structure of
+higher-level content.  For instance, there is a schema that defines
+how <a class="reference internal" href="schemas/stsci.edu/asdf/0.1.0/core/ndarray.html#http-stsci-edu-schemas-asdf-0-1-0-core-ndarray"><em>n-dimensional array data</em></a> should be
+described.  These schema are written in a language called
+<a class="reference internal" href="extending.html#yaml-schema"><em>YAML Schema</em></a> which is just a thin extension of <a class="reference external" href="http://json-schema.org/latest/json-schema-validation.html">JSON Schema,
+Draft 4</a>.
+<a class="reference internal" href="schemas/index.html#schema"><em>ASDF schema definitions</em></a>, provides a reference to all of these schema in detail.
+<a class="reference internal" href="extending.html#extending-asdf"><em>Extending ASDF</em></a> describes how to use YAML schema to define new
+schema.</p>
+<div class="section" id="tags">
+<span id="id1"></span><h2>Tags<a class="headerlink" href="#tags" title="Permalink to this headline">¶</a></h2>
+<p>YAML includes the ability to assign <a class="reference internal" href="#tags"><em>Tags</em></a> (or types) to any
+object in the tree.  This is an important feature that sets it apart
+from other data representation languages, such as JSON.  ASDF defines
+a number of custom tags, each of which has a corresponding schema.
+For example the tag of the root element of the tree must always be
+<tt class="docutils literal"><span class="pre">tag:stsci.edu:asdf/0.1.0/core/asdf</span></tt>, which corresponds to the
+<a class="reference internal" href="schemas/stsci.edu/asdf/0.1.0/core/asdf.html#http-stsci-edu-schemas-asdf-0-1-0-core-asdf"><em>asdf schema</em></a>
+schema.  A validating ASDF reader would encounter the tag when reading
+in the file, load the corresponding schema, and validate the content
+against it.  An ASDF library may also use this information to convert
+to a native data type that presents a more convenient interface to the
+user than the structure of basic types stored in the YAML content.</p>
+<p>For example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="nt">%YAML</span> <span class="m">1.1</span>
+<span class="nn">---</span> <span class="kt">!&lt;tag:stsci.edu:asdf/0.1.0/core/asdf&gt;</span>
+<span class="l-Scalar-Plain">data</span><span class="p-Indicator">:</span> <span class="kt">!&lt;tag:stsci.edu:asdf/0.1.0/core/ndarray&gt;</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+  <span class="l-Scalar-Plain">dtype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">1024</span><span class="p-Indicator">,</span> <span class="nv">1024</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+<p>All tags defined in the ASDF standard itself begin with the prefix
+<tt class="docutils literal"><span class="pre">tag:stsci.edu:asdf/0.1.0/</span></tt>.  This can be broken down as:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">tag:</span></tt> The standard prefix used for all YAML tags.</li>
+<li><tt class="docutils literal"><span class="pre">stsci.edu</span></tt> The owner of the tag.</li>
+<li><tt class="docutils literal"><span class="pre">asdf</span></tt> The name of the standard.</li>
+<li><tt class="docutils literal"><span class="pre">0.1.0</span></tt> The version of the standard.</li>
+</ul>
+<p>Following that is the &#8220;module&#8221; containing the schema (see
+<a class="reference internal" href="schemas/index.html#schema"><em>ASDF schema definitions</em></a> for a list of the available modules).  Lastly is the tag
+name itself, for example, <tt class="docutils literal"><span class="pre">asdf</span></tt> or <tt class="docutils literal"><span class="pre">ndarray</span></tt>.  Since it is
+cumbersome to type out these long prefixes for every tag, it is
+recommended that ASDF files declare a prefix at the top of the YAML
+file and use it throughout.  (Most standard YAML writing libraries
+have facilities to do this automatically.)  For example, the following
+example is equivalent to the above example, but is more user-friendly.
+The <tt class="docutils literal"><span class="pre">%TAG</span></tt> declaration declares that the exclamation point (<tt class="docutils literal"><span class="pre">!</span></tt>)
+will be replaced with the prefix <tt class="docutils literal"><span class="pre">tag:stsci.edu:asdf/0.1.0/</span></tt>:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="nt">%YAML</span> <span class="m">1.1</span>
+<span class="nt">%TAG</span> <span class="kt">!</span> <span class="kt">tag:stsci.edu:asdf/0.1.0/</span>
+<span class="nn">---</span> <span class="kt">!core</span><span class="l-Scalar-Plain">/asdf</span>
+<span class="l-Scalar-Plain">data</span><span class="p-Indicator">:</span> <span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+  <span class="l-Scalar-Plain">dtype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">1024</span><span class="p-Indicator">,</span> <span class="nv">1024</span><span class="p-Indicator">]</span>
+</pre></div>
+</div>
+<p>An ASDF parser may use the tag to look up the corresponding schema in
+the ASDF standard and validate the element.  The schema definitions
+ship as part of the ASDF standard.</p>
+<p>An ASDF parser may also use the tag information to convert the element
+to a native data type.  For example, in Python, an ASDF parser may
+convert a <a class="reference internal" href="schemas/stsci.edu/asdf/0.1.0/core/ndarray.html#http-stsci-edu-schemas-asdf-0-1-0-core-ndarray"><em>ndarray</em></a> tag to a
+<a class="reference external" href="http://www.numpy.org">Numpy</a> array instance, providing a
+convenient and familiar interface to the user to access
+<em>n</em>-dimensional data.</p>
+<p>The ASDF standard does not require parser implementations to validate
+or perform native type conversion, however.  A parser may simply leave
+the tree represented in the low-level basic data structures.  When
+writing an ASDF file, however, the elements in the tree must be
+appropriately tagged for other tools to make use of them.</p>
+<p>ASDF parsers must not fail when encountering an unknown tag, but must
+simply retain the low-level data structure and the presence of the
+tag.  This is important, as end users will likely want to store their
+own custom tags in ASDF files alongside the tags defined in the ASDF
+standard itself, and the file must still be readable by ASDF parsers
+that do not understand those tags.</p>
+</div>
+<div class="section" id="references">
+<span id="id2"></span><h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to directly reference other items within the same tree
+or within the tree of another ASDF file.  This functionality is based
+on two IETF standards: <a class="reference external" href="http://tools.ietf.org/html/rfc6901">JSON Pointer (IETF RFC 6901)</a> and <a class="reference external" href="http://tools.ietf.org/html/draft-pbryan-zyp-json-ref-03">JSON Reference (Draft 3)</a>.</p>
+<p>A reference is represented as a mapping (dictionary) with a single
+key/value pair. The key is always the special keyword <tt class="docutils literal"><span class="pre">$ref</span></tt> and the
+value is a URI.  The URI may contain a fragment (the part following
+the <tt class="docutils literal"><span class="pre">#</span></tt> character) in JSON Pointer syntax that references a specific
+element within the external file.  This is a <tt class="docutils literal"><span class="pre">/</span></tt>-delimited path
+where each element is a mapping key or an array index.  If no fragment
+is present, the reference refers to the top of the tree.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">JSON Pointer is a very simple convention.  The only wrinkle is that
+because the characters <tt class="docutils literal"><span class="pre">'~'</span></tt> (x7E) and <tt class="docutils literal"><span class="pre">'/'</span></tt> (%x2F) have
+special meanings, <tt class="docutils literal"><span class="pre">'~'</span></tt> needs to be encoded as <tt class="docutils literal"><span class="pre">'~0'</span></tt> and
+<tt class="docutils literal"><span class="pre">'/'</span></tt> needs to be encoded as <tt class="docutils literal"><span class="pre">'~1'</span></tt> when these characters
+appear in a reference token.</p>
+</div>
+<p>When these references are resolved, this mapping should be treated as
+having the same logical content as the target of the URI, though the
+exact details of how this is performed is dependent on the
+implementation, i.e., a library may copy the target data into the
+source tree, or it may insert a proxy object that is lazily loaded at
+a later time.</p>
+<p>For example, suppose we had a given ASDF file containing some shared
+reference data, available on a public webserver at the URI
+<tt class="docutils literal"><span class="pre">http://www.nowhere.com/reference.asdf</span></tt>:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">wavelengths</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="kt">!ndarray</span>
+    <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+    <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">256</span><span class="p-Indicator">,</span> <span class="nv">256</span><span class="p-Indicator">]</span>
+    <span class="l-Scalar-Plain">dtype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float</span>
+</pre></div>
+</div>
+<p>Another file may reference this data directly:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">reference_data</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;http://www.nowhere.com/reference.asdf#wavelengths/0&quot;</span>
+</pre></div>
+</div>
+<p>It is also possible to use references within the same file:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">data</span><span class="p-Indicator">:</span> <span class="kt">!ndarray</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">256</span><span class="p-Indicator">,</span> <span class="nv">256</span><span class="p-Indicator">]</span>
+  <span class="l-Scalar-Plain">dtype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float</span>
+  <span class="l-Scalar-Plain">mask</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;#/my_mask&quot;</span>
+
+<span class="l-Scalar-Plain">my_mask</span><span class="p-Indicator">:</span> <span class="kt">!ndarray</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">256</span><span class="p-Indicator">,</span> <span class="nv">256</span><span class="p-Indicator">]</span>
+  <span class="l-Scalar-Plain">dtype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">uint8</span>
+</pre></div>
+</div>
+<p>Reference resolution should be performed <em>after</em> the entire tree is
+read, therefore forward references within the same file are explicitly
+allowed.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The YAML 1.1 standard itself also provides a method for internal
+references called &#8220;anchors&#8221; and &#8220;aliases&#8221;.  It does not, however,
+support external references.  While ASDF does not explicitly
+disallow YAML anchors and aliases, since it explicitly supports
+all of YAML 1.1, their use is discouraged in favor of the more
+flexible JSON Pointer/JSON Reference standard described above.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Erik Bray, Michael Droettboom, Space Telescope Science Institute.<br/>
+      Last updated on Sep 15, 2014.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
