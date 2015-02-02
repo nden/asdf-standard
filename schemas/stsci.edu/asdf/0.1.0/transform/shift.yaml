@@ -1,16 +1,16 @@
 %YAML 1.1
 ---
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
-id: "http://stsci.edu/schemas/asdf/0.1.0/wcs/rotate2d"
-tag: "tag:stsci.edu:asdf/0.1.0/wcs/rotate2d"
+id: "http://stsci.edu/schemas/asdf/0.1.0/transform/shift"
+tag: "tag:stsci.edu:asdf/0.1.0/transform/shift"
 title: >
-  A 2D rotation.
+  A Shift opeartion.
 description: >
-  A 2D rotation around the origin, in degrees.
+  Apply a shift in one direction.
 
 type: object
 properties:
-  angle:
+  offsets:
     type: number
-    description: Angle, in degrees.
-requiredProperties: [angle]
+    description: Offset in one direction.
+requiredProperties: [offsets]
