@@ -1,4 +1,8 @@
 build
 *.pyc
+*~
+
+# Mac OSX
+.DS_Store
 
 source/schemas/stsci.edu
