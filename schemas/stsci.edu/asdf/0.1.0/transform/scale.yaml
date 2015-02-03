@@ -10,7 +10,7 @@ description: >
 
 type: object
 properties:
-  factors:
+  factor:
     type: number
     description: Multiplication factor.
-requiredProperties: [factors]
+requiredProperties: [factor]
